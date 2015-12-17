@@ -1,5 +1,5 @@
 var React = require('react');
-var Cidr = require('../helper/CIDR');
+var Cidr = require('../helper/CIDR')();
 var Button = require('canon-react').Button;
 
 var labelSpan = {
@@ -14,7 +14,6 @@ var Main = React.createClass({
       startIP: '',
       endIP: ''
     }
-
   },
   setRangeStart: function(ref) {
     this.state.startIP = ref;
@@ -24,10 +23,7 @@ var Main = React.createClass({
   },
   convertIPs: function() {
     this.state.cidrIPs = [];
-    this.setState({cidrIPs: Cidr().IPtoCIDR(this.state.startIP.value, this.state.endIP.value)});
-    // this.state.cidrIPs = Cidr().IPtoCIDR(this.state.startIP.value, this.state.endIP.value);
-    console.log(this.props);
-    console.log(this.state);
+    this.setState({cidrIPs: Cidr.IPtoCIDR(this.state.startIP.value, this.state.endIP.value)});
   },
   render: function() {
     return (
@@ -43,9 +39,9 @@ var Main = React.createClass({
         </div>
         <Button onClick={this.convertIPs} type="secondary" style={{marginLeft: '4%'}}>Convert</Button>
         <div>
-          <ul>
+          <ul style={{padding: '2%'}}>
             {this.state.cidrIPs.map && this.state.cidrIPs.map(function(ip, index) {
-              return <li key={index}> {ip} </li>
+              return <li key={index} style={{listStyle: 'none'}}> {ip} </li>
             })}
           </ul>
         </div>
