@@ -1,6 +1,6 @@
-var CIDR = (function() {
-	'use strict';
-
+// var CIDR = (function() {
+// 	'use strict';
+function CIDR() {
 	var startArray = [],
 	endArray = [],
 	startDecimal = 0,
@@ -20,11 +20,9 @@ var CIDR = (function() {
     startDecimal = convertIpToDecimal(startArray),
   	endDecimal = convertIpToDecimal(endArray),
   	numberOfIPs = TotalIps(startDecimal, endDecimal);
-    console.log(numberOfIPs);
     while(numberOfIPs != 0) {
       getCIDR(4);
     }
-    console.log(answer);
     return answer;
   }
 
@@ -64,11 +62,13 @@ var CIDR = (function() {
 	}
 
   function storeAnswer(startArray, i, octet) {
-    console.log("fii");
     console.log(i);
 		answer.push(startArray[0] + "." + startArray[1] + "." + startArray[2] + "." + startArray[3] + "/" + String(octet*8-i));
 		startArray[octet-1] = parseInt(startArray[octet-1],10) + Math.pow(2,i);
 		numberOfIPs -= Math.pow(2,i);
     console.log(numberOfIPs);
 	}
-})();
+}
+
+module.exports = CIDR;
+// })();
