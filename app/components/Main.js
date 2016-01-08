@@ -1,5 +1,5 @@
 var React = require('react');
-var Cidr = require('../helper/CIDR')();
+var Cidr = require('../helper/CIDR');
 var Button = require('canon-react').Button;
 
 var labelSpan = {
@@ -23,7 +23,7 @@ var Main = React.createClass({
   },
   convertIPs: function() {
     this.state.cidrIPs = [];
-    this.setState({cidrIPs: Cidr.IPtoCIDR(this.state.startIP.value, this.state.endIP.value)});
+    this.setState({cidrIPs: Cidr().IPtoCIDR(this.state.startIP.value, this.state.endIP.value)});
   },
   render: function() {
     return (
