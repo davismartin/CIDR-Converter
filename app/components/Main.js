@@ -41,6 +41,8 @@ var Main = React.createClass({
         <div>
           <ul style={{padding: '2%'}}>
             {this.state.cidrIPs.map && this.state.cidrIPs.map(function(ip, index) {
+              console.log(ip);
+              console.log(index);
               return <li key={index} style={{listStyle: 'none'}}> {ip} </li>
             })}
           </ul>
